@@ -1,29 +1,32 @@
 "plugins
 call plug#begin('~/.config/nvim/bundle')
 "language support
+Plug 'stephpy/vim-yaml'
 Plug 'vim-perl/vim-perl6'          "Perl support
 Plug 'elixir-lang/vim-elixir'      "Elixir support
 Plug 'mattreduce/vim-mix'
 Plug 'vim-ruby/vim-ruby'           "ruby support
 Plug 'tpope/vim-rails'             "rails support
 Plug 'pangloss/vim-javascript'     "JS support
-Plug 'mxw/vim-jsx'                 "JSX highlighting
+"Plug 'mxw/vim-jsx'                 "JSX highlighting
 Plug 'elzr/vim-json'               "JSON highlighting
+Plug 'jparise/vim-graphql'
 "Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 Plug 'fatih/vim-go'                "Golang support
 Plug 'burnettk/vim-angular'        "angular support
 Plug 'mattn/emmet-vim'             "html support
-Plug 'rust-lang/rust.vim'        "rust support
+Plug 'rust-lang/rust.vim'          "rust support
 Plug 'neovimhaskell/haskell-vim'
 Plug 'ap/vim-css-color'
 
 "Plug 'Shougo/deoplete.nvim'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 "file manipulation plugins
-Plug '~/.fzf'
-"Plug '/usr/local/opt/fzf'
-"Plug 'junegunn/fzf.vim'
+"Plug '~/.fzf'                     "on linux
+Plug '/usr/local/opt/fzf'          "on mac w/ homebrew
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 
 "editing
 Plug 'tpope/vim-surround'          "surrounding for vim
@@ -46,12 +49,17 @@ Plug 'christoomey/vim-tmux-navigator'
 
 "Interface
 Plug 'itchyny/lightline.vim'        "lightline - better airline
+Plug 'yggdroot/indentline'          "indent lines
+Plug 'kien/rainbow_parentheses.vim' "rainbow parens
+
+"colors
+Plug 'relastle/bluewery.vim'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'arcticicestudio/nord-vim'
 Plug 'meister/vim-snazzyfied'
+Plug 'wadackel/vim-dogrun'
 Plug 'flazz/vim-colorschemes'       "colorscheme megapack
-Plug 'yggdroot/indentline'          "indent lines
-Plug 'kien/rainbow_parentheses.vim' "rainbow parens
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 set rtp+=/usr/local/opt/fzf
@@ -59,17 +67,23 @@ set rtp+=/usr/local/opt/fzf
 "let g:deoplete#enable_at_startup = 1
 set completeopt+=menuone
 set completeopt+=noinsert
-let g:mucomplete#enable_auto_at_startup = 1
 let g:tmux_navigator_save_on_switch = 2
 let g:python3_host_prog = '/usr/local/anaconda3/bin/python3'
 filetype plugin on
-colorscheme nord
+set termguicolors
+let ayucolor="light" "dark, mirage, or light
+colorscheme ayu
+
+let g:ale_fixers = {
+\  'javascript': ['eslint']
+\  }
+let g:ale_fix_on_save = 1
 
 "let g:prettier#autoformat = 0
 "autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 set laststatus=2               " enable airline even if no splits
-let g:lightline = {'colorscheme': 'challenger_deep'}
+let g:lightline = {'colorscheme': 'ayu'}
 
 "rainbow_parens always on
 au VimEnter * RainbowParenthesesToggle
@@ -119,6 +133,7 @@ nnoremap <silent> <c-w> :TmuxNavigatePrevious<cr>
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 
 nnoremap <leader>b :Buffers<CR>
+"
 "testing
 nmap <silent> <leader>xn :TestNearest<CR>
 nmap <silent> <leader>xt :TestFile<CR>
@@ -130,6 +145,7 @@ nnoremap ; :
 
 "fzf
 nnoremap <silent> <Leader>o :FZF<CR>
+nnoremap <silent> <Leader>t :NERDTree<CR>
 
 "splitting window
 nnoremap <silent> <Leader>v :vertical split<CR>
@@ -137,7 +153,12 @@ nnoremap <silent> <Leader>h :split<CR>
 
 "themeing
 nnoremap <Leader>TS :colorscheme
-nnoremap <Leader>TR :colorscheme apprentice<CR>
+
+"un-highlight after search
 nnoremap <silent> <Leader>hl :noh<CR>
+
+"comment or uncomment with C-/
 map <C-_> :call NERDComment(0, "toggle")<CR>
 
+packloadall
+silent! helptags ALL

@@ -1,0 +1,17 @@
+"jump to hyperspace
+set nocompatible
+
+syntax enable
+filetype plugin on
+
+
+"find files
+" provides tab-completion for all file-related tasks
+" recursively search directories
+set path+=**
+
+" display all matches when we tab complete
+set wildmenu
+
+"tag jumping
+command! MakeTags !ctags -R .
