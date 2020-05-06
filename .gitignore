@@ -3,4 +3,5 @@ VirtualBox
 htop
 exercism
 nvim/bundle
-
+nvim/.netrwhist
+configstore/

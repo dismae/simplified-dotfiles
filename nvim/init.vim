@@ -11,6 +11,7 @@ Plug 'pangloss/vim-javascript'     "JS support
 "Plug 'mxw/vim-jsx'                 "JSX highlighting
 Plug 'elzr/vim-json'               "JSON highlighting
 Plug 'jparise/vim-graphql'
+Plug 'evanleck/vim-svelte'         "svelte highlighting
 "Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 Plug 'fatih/vim-go'                "Golang support
 Plug 'burnettk/vim-angular'        "angular support
