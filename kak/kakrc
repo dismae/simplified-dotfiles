@@ -1,0 +1,19 @@
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+# plugins
+plug "andreyorst/fzf.kak"
+plug "alexherbo2/search-highlighter.kak"
+
+# set editor styles
+add-highlighter global/ wrap
+add-highlighter global/ number-lines -separator '•|'
+set-face  global LineNumberCursor cyan,default
+
+#  change  cursors
+set-face global PrimaryCursor black,cyan
+set-face global SecondaryCursor black,yellow
+
+# custom mappings
+# default kak leader (user) key is ,
+map global normal <c-p> ': fzf-mode<ret>'
+map global user c  ':comment-line<ret>'
+

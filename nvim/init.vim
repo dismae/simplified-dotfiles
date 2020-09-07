@@ -3,15 +3,15 @@ call plug#begin('~/.config/nvim/bundle')
 "language support
 Plug 'stephpy/vim-yaml'
 Plug 'vim-perl/vim-perl6'          "Perl support
-Plug 'elixir-lang/vim-elixir'      "Elixir support
-Plug 'mattreduce/vim-mix'
+"Plug 'elixir-lang/vim-elixir'      "Elixir support
+"Plug 'mattreduce/vim-mix'
 Plug 'vim-ruby/vim-ruby'           "ruby support
 Plug 'tpope/vim-rails'             "rails support
 Plug 'pangloss/vim-javascript'     "JS support
 "Plug 'mxw/vim-jsx'                 "JSX highlighting
 Plug 'elzr/vim-json'               "JSON highlighting
 Plug 'jparise/vim-graphql'
-Plug 'evanleck/vim-svelte'         "svelte highlighting
+"Plug 'evanleck/vim-svelte'         "svelte highlighting
 "Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 Plug 'fatih/vim-go'                "Golang support
 Plug 'burnettk/vim-angular'        "angular support
@@ -21,7 +21,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'ap/vim-css-color'
 
 "Plug 'Shougo/deoplete.nvim'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 
 "file manipulation plugins
 "Plug '~/.fzf'                     "on linux
@@ -42,7 +42,7 @@ Plug 'terryma/vim-multiple-cursors' "Multiple Cursors
                                     "recent selection.
 
 "utility
-Plug 'janko-m/vim-test'             "testing for lots of languages
+"Plug 'janko-m/vim-test'             "testing for lots of languages
 Plug 'tpope/vim-repeat'             "makes the . operator more awesome
 Plug 'tpope/vim-fugitive'           "vim git so awesome it should be illegal
 Plug 'airblade/vim-gitgutter'
