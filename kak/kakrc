@@ -1,19 +1,40 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 # plugins
+plug "robertmeta/plug.kak"
 plug "andreyorst/fzf.kak"
 plug "alexherbo2/search-highlighter.kak"
+plug "alexherbo2/prelude.kak"
+# plug "alexherbo2/auto-pairs.kak"
+plug "h-youhei/kakoune-surround"
+plug "icantjuddle/ayu-kak" theme
+plug 'Skytrias/gdscript-kak'
+# plug "evanrelf/number-toggle.kak"
+
+hook global WinSetOption filetype=ruby %{
+    set-option global indentwidth 2
+}
 
 # set editor styles
+colorscheme ayu-light 
 add-highlighter global/ wrap
-add-highlighter global/ number-lines -separator '•|'
-set-face  global LineNumberCursor cyan,default
+add-highlighter global/ number-lines
+add-highlighter global/ show-whitespaces
+# set-face  global LineNumberCursor cyan,default
 
 #  change  cursors
-set-face global PrimaryCursor black,cyan
-set-face global SecondaryCursor black,yellow
+# set-face global PrimaryCursor black,cyan
+# set-face global SecondaryCursor black,yellow
 
 # custom mappings
 # default kak leader (user) key is ,
-map global normal <c-p> ': fzf-mode<ret>'
-map global user c  ':comment-line<ret>'
+map global normal <c-p> ': fzf-mode<ret>' -docstring 'fzf'
+map global user c  ':comment-line<ret>' -docstring 'comment or uncomment line'
+map global user p '!pbpaste<ret>' -docstring 'paste from system keyboard via pbpaste'
+map global user y '<a-|>pbcopy<ret>' -docstring 'copy from system keyboard via pbcopy'
+map global user s ':enter-user-mode surround<ret>' -docstring 'enter surround mode'
 
+declare-user-mode surround
+map global surround s ':surround<ret>' -docstring 'surround'
+map global surround c ':change-surround<ret>' -docstring 'change'
+map global surround d ':delete-surround<ret>' -docstring 'delete'
+map global surround t ':select-surrounding-tag<ret>' -docstring 'select tag'

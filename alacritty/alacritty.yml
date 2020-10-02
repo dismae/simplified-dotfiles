@@ -62,8 +62,6 @@ live_config_reload: true
 #    The `command` field must be a map containing a `program` string and an
 #    `args` array of command line parameter strings. For example:
 #       `{ program: "alacritty", args: ["-e", "vttest"] }`
-
-# Colors (ayu_light)
 colors:
   primary:
     background: '0xfafafa'
