@@ -1,7 +1,13 @@
-cp ~/.config/_base.yml ~/.config/alacritty.yml
-alacritty.yml << ~/.config/colors/$COLORSCHEME.yml
-# do something 
-#function blue() {
-  #cp base.yml alacritty.yml
-  #alacritty.yml << colors/blue.yml
-#}
+#!/bin/sh
+
+color=$1
+alacritty=~/.config/alacritty
+base=${alacritty}/_base.yml
+keybinds=${alacritty}/_alt_keybinds.yaml
+colorscheme=${alacritty}/colors/${color}.yml
+
+configure_alacritty() {
+  cat ${base} ${keybinds} ${colorscheme} > ${alacritty}/alacritty.yml
+}
+
+configure_alacritty
