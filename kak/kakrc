@@ -15,15 +15,10 @@ hook global WinSetOption filetype=ruby %{
 }
 
 # set editor styles
-colorscheme ayu-light 
+colorscheme cosmic-latte-dark
 add-highlighter global/ wrap
 add-highlighter global/ number-lines
 add-highlighter global/ show-whitespaces
-# set-face  global LineNumberCursor cyan,default
-
-#  change  cursors
-# set-face global PrimaryCursor black,cyan
-# set-face global SecondaryCursor black,yellow
 
 # custom mappings
 # default kak leader (user) key is ,
