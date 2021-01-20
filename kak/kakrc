@@ -15,7 +15,7 @@ hook global WinSetOption filetype=ruby %{
 }
 
 # set editor styles
-colorscheme dracula
+colorscheme nord
 add-highlighter global/ wrap
 add-highlighter global/ number-lines
 add-highlighter global/ show-whitespaces
