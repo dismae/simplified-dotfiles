@@ -10,6 +10,15 @@ function ta() {
    tmux attach-session -t $1
 }
 
+function kw() {
+    kak -c work $@ || kak -d -s work $@
+}
+
+function kkw() {
+    echo kill | kak -p work
+}
+
+
 function recolor() {
     echo "changing colors to $1"
     bash ~/.config/scripts/build_alacritty_yml.sh

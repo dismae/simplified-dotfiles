@@ -1,6 +1,6 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 # plugins
-plug "robertmeta/plug.kak"
+plug "robertmeta/plug.kak" noload
 plug "andreyorst/fzf.kak"
 plug "alexherbo2/search-highlighter.kak"
 plug "alexherbo2/prelude.kak"
@@ -10,15 +10,38 @@ plug "icantjuddle/ayu-kak" theme
 plug 'Skytrias/gdscript-kak'
 # plug "evanrelf/number-toggle.kak"
 
+eval %sh{kak-lsp --kakoune -s $kak_session}
+lsp-enable
+
 hook global WinSetOption filetype=ruby %{
     set-option global indentwidth 2
 }
 
+hook global WinSetOption filetype=sh %{
+    set-option global indentwidth 4
+}
+
+hook global WinSetOption filetype=javascript %{
+    set-option global indentwidth 0
+    set-option global tabstop 3
+}
+hook global WinSetOption filetype=html %{
+    set-option global indentwidth 0
+    set-option global tabstop 3
+}
+hook global WinSetOption filetype=yaml %{
+    set-option global indentwidth 0
+    set-option global tabstop 3
+}
+
 # set editor styles
-colorscheme nord
+# colorscheme nord
 add-highlighter global/ wrap
 add-highlighter global/ number-lines
 add-highlighter global/ show-whitespaces
+
+add-highlighter global/ show-matching
+set-face global MatchingChar black,magenta
 
 # custom mappings
 # default kak leader (user) key is ,
